@@ -1,211 +1,82 @@
 document.addEventListener("DOMContentLoaded", function () {
+    const search = document.getElementById("documentSearch");
+    const filter = document.getElementById("documentFilter");
 
-  const documentSearch = document.getElementById("documentSearch");
-  const documentFilter = document.getElementById("documentFilter");
-
-  if (documentSearch && documentFilter) {
-
-    documentSearch.addEventListener("input", filterDocuments);
-    documentFilter.addEventListener("change", filterDocuments);
-
-  }
-
-
-  const contactForm = document.getElementById("contactForm");
-
-  if (contactForm) {
-
-    contactForm.addEventListener("submit", function (event) {
-
-      event.preventDefault();
-
-      const name = document.getElementById("name").value.trim();
-      const email = document.getElementById("email").value.trim();
-      const subject = document.getElementById("subject").value.trim();
-      const message = document.getElementById("message").value.trim();
-      const formMessage = document.getElementById("formMessage");
-
-
-      if (
-        name === "" ||
-        email === "" ||
-        subject === "" ||
-        message === ""
-      ) {
-
-        formMessage.textContent =
-          "Please fill in all required fields.";
-
-        formMessage.style.color = "red";
-
-        return;
-      }
-
-
-      formMessage.textContent =
-        "Thank you. Your inquiry has been submitted successfully.";
-
-      formMessage.style.color = "green";
-
-      contactForm.reset();
-
-    });
-
-  }
-
-});
-
-
-
-function filterDocuments() {
-
-  const searchText =
-    document.getElementById("documentSearch")
-      .value
-      .toLowerCase();
-
-  const selectedType =
-    document.getElementById("documentFilter")
-      .value;
-
-  const documents =
-    document.querySelectorAll(".document-card");
-
-
-  documents.forEach(function (documentCard) {
-
-    const text =
-      documentCard.textContent.toLowerCase();
-
-    const type =
-      documentCard.getAttribute("data-type");
-
-
-    const matchesSearch =
-      text.includes(searchText);
-
-    const matchesFilter =
-      selectedType === "all" ||
-      type === selectedType;
-
-
-    if (matchesSearch && matchesFilter) {
-
-      documentCard.style.display = "block";
-
-    } else {
-
-      documentCard.style.display = "none";
-
+    if (search && filter) {
+        search.addEventListener("input", filterDocuments);
+        filter.addEventListener("change", filterDocuments);
     }
 
-  });
+    const form = document.getElementById("contactForm");
 
+    if (form) {
+        form.addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            const message = document.getElementById("formMessage");
+
+            if (form.checkValidity()) {
+                message.textContent = "Your inquiry has been submitted successfully.";
+                message.style.color = "green";
+                form.reset();
+            } else {
+                message.textContent = "Please fill in all required fields.";
+                message.style.color = "red";
+            }
+        });
+    }
+});
+
+function filterDocuments() {
+    const searchText = document.getElementById("documentSearch").value.toLowerCase();
+    const selectedType = document.getElementById("documentFilter").value;
+    const documents = document.querySelectorAll(".document");
+
+    documents.forEach(function (documentItem) {
+        const text = documentItem.textContent.toLowerCase();
+        const type = documentItem.getAttribute("data-type");
+
+        const matchesSearch = text.includes(searchText);
+        const matchesType = selectedType === "all" || type === selectedType;
+
+        documentItem.style.display =
+            matchesSearch && matchesType ? "block" : "none";
+    });
 }
 
-
-
-function showDocumentDetails(
-  title,
-  date,
-  type,
-  source,
-  description
-) {
-
-  const modal =
-    document.getElementById("documentModal");
-
-  document.getElementById("modalTitle")
-    .textContent = title;
-
-  document.getElementById("modalDate")
-    .textContent = date;
-
-  document.getElementById("modalType")
-    .textContent = type;
-
-  document.getElementById("modalSource")
-    .textContent = source;
-
-  document.getElementById("modalDescription")
-    .textContent = description;
-
-
-  modal.style.display = "block";
-
+function showDocument(title, date, type, source) {
+    document.getElementById("modalTitle").textContent = title;
+    document.getElementById("modalDate").textContent = date;
+    document.getElementById("modalType").textContent = type;
+    document.getElementById("modalSource").textContent = source;
+    document.getElementById("documentModal").style.display = "block";
 }
 
-
-
-function closeDocumentDetails() {
-
-  document.getElementById("documentModal")
-    .style.display = "none";
-
+function closeDocument() {
+    document.getElementById("documentModal").style.display = "none";
 }
 
-
-
-function openGalleryImage(imagePath, caption) {
-
-  const modal =
-    document.getElementById("galleryModal");
-
-  const image =
-    document.getElementById("galleryModalImage");
-
-  const captionElement =
-    document.getElementById("galleryModalCaption");
-
-  const download =
-    document.getElementById("downloadImage");
-
-
-  image.src = imagePath;
-
-  image.alt = caption;
-
-  captionElement.textContent = caption;
-
-  download.href = imagePath;
-
-
-  modal.style.display = "block";
-
+function openImage(path, caption) {
+    document.getElementById("largeImage").src = path;
+    document.getElementById("largeImage").alt = caption;
+    document.getElementById("imageCaption").textContent = caption;
+    document.getElementById("downloadImage").href = path;
+    document.getElementById("imageModal").style.display = "block";
 }
 
-
-
-function closeGalleryImage() {
-
-  document.getElementById("galleryModal")
-    .style.display = "none";
-
+function closeImage() {
+    document.getElementById("imageModal").style.display = "none";
 }
-
-
 
 window.addEventListener("click", function (event) {
+    const documentModal = document.getElementById("documentModal");
+    const imageModal = document.getElementById("imageModal");
 
-  const documentModal =
-    document.getElementById("documentModal");
+    if (event.target === documentModal) {
+        closeDocument();
+    }
 
-  const galleryModal =
-    document.getElementById("galleryModal");
-
-
-  if (event.target === documentModal) {
-
-    documentModal.style.display = "none";
-
-  }
-
-
-  if (event.target === galleryModal) {
-
-    galleryModal.style.display = "none";
-
-  }
-
+    if (event.target === imageModal) {
+        closeImage();
+    }
 });
