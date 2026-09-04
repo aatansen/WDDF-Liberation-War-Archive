@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>
+    Gallery | Liberation War Archive
+  </title>
+
+  <link rel="stylesheet" href="assets/style.css">
+
+</head>
+
+
+<body>
+
+
+  <header class="header">
+
+    <div class="container nav-container">
+
+      <a href="index.html" class="logo">
+        Liberation War Archive
+      </a>
+
+
+      <nav class="navbar">
+
+        <a href="index.html">
+          Home
+        </a>
+
+        <a href="documents.html">
+          Documents
+        </a>
+
+        <a href="interviews.html">
+          Interviews
+        </a>
+
+        <a href="gallery.html" class="active">
+          Gallery
+        </a>
+
+        <a href="contact.html">
+          Contact
+        </a>
+
+      </nav>
+
+    </div>
+
+  </header>
+
+
+  <main>
+
+
+    <section class="page-header">
+
+      <div class="container">
+
+        <p class="section-label">
+          VISUAL HISTORY
+        </p>
+
+        <h1>
+          Photographic Gallery
+        </h1>
+
+        <p>
+          Explore photographs documenting people,
+          places and events of the Liberation War.
+        </p>
+
+      </div>
+
+    </section>
+
+
+
+    <section class="section">
+
+      <div class="container">
+
+
+        <div class="gallery-grid">
+
+
+          <div class="gallery-item" onclick="openGalleryImage(
+                 'assets/images/img-1.jpg',
+                 'Historical photograph from 1971'
+                 )">
+
+            <img src="assets/images/img-1.jpg" alt="Historical photograph">
+
+            <div class="gallery-caption">
+              Historical photograph from 1971
+            </div>
+
+          </div>
+
+
+          <div class="gallery-item" onclick="openGalleryImage(
+                 'assets/images/img-2.png',
+                 'People during the Liberation War'
+                 )">
+
+            <img src="assets/images/img-2.png" alt="People during Liberation War">
+
+            <div class="gallery-caption">
+              People during the Liberation War
+            </div>
+
+          </div>
+
+
+          <div class="gallery-item" onclick="openGalleryImage(
+                 'assets/images/img-3.jpg',
+                 'Historical location'
+                 )">
+
+            <img src="assets/images/img-3.jpg" alt="Historical location">
+
+            <div class="gallery-caption">
+              Historical location
+            </div>
+
+          </div>
+
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <div id="galleryModal" class="gallery-modal">
+
+      <div class="gallery-modal-content">
+
+        <button class="modal-close" onclick="closeGalleryImage()">
+          &times;
+        </button>
+
+
+        <img id="galleryModalImage" src="" alt="">
+
+
+        <div class="gallery-modal-footer">
+
+          <p id="galleryModalCaption"></p>
+
+          <a id="downloadImage" href="" download class="btn btn-primary">
+            Download Image
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+  </main>
+
+
+  <footer class="footer">
+
+
+    <div class="container footer-content">
+
+      <div>
+
+        <h3>
+          Liberation War Archive
+        </h3>
+
+        <p>
+          Preserving historical memories for
+          future generations.
+        </p>
+
+      </div>
+
+
+      <div>
+
+        <h3>
+          Quick Links
+        </h3>
+
+        <a href="index.html">
+          Home
+        </a>
+
+        <a href="documents.html">
+          Documents
+        </a>
+
+        <a href="interviews.html">
+          Interviews
+        </a>
+
+        <a href="contact.html">
+          Contact
+        </a>
+
+      </div>
+
+    </div>
+
+
+    <div class="copyright">
+
+      <p>
+        &copy; 2026 Liberation War Archive.
+      </p>
+
+    </div>
+
+
+  </footer>
+
+
+  <script src="assets/script.js"></script>
+
+</body>
+
+</html>

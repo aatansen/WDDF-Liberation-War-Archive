@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Documents | Liberation War Archive</title>
+
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+
+<body>
+
+    <header class="header">
+
+        <div class="container nav-container">
+
+            <a href="index.html" class="logo">
+                Liberation War Archive
+            </a>
+
+            <nav class="navbar">
+                <a href="index.html">Home</a>
+                <a href="documents.html" class="active">Documents</a>
+                <a href="interviews.html">Interviews</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <main>
+
+        <section class="page-header">
+
+            <div class="container">
+
+                <p class="section-label">HISTORICAL RECORDS</p>
+
+                <h1>Documents Archive</h1>
+
+                <p>
+                    Explore historical documents connected to the
+                    Liberation War of Bangladesh.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <section class="section">
+
+            <div class="container">
+
+                <div class="filter-area">
+
+                    <input
+                        type="text"
+                        id="documentSearch"
+                        placeholder="Search documents..."
+                    >
+
+                    <select id="documentFilter">
+
+                        <option value="all">
+                            All Document Types
+                        </option>
+
+                        <option value="declaration">
+                            Declaration
+                        </option>
+
+                        <option value="official">
+                            Official Correspondence
+                        </option>
+
+                        <option value="treaty">
+                            Treaty / Agreement
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="document-grid">
+
+
+                    <article class="document-card"
+                             data-type="declaration">
+
+                        <img src="assets/images/img-1.jpg"
+                             alt="Declaration document">
+
+                        <div class="document-content">
+
+                            <span class="card-tag">
+                                DECLARATION
+                            </span>
+
+                            <h2>
+                                Declaration of Independence
+                            </h2>
+
+                            <p class="document-date">
+                                Date: March 1971
+                            </p>
+
+                            <p>
+                                A historical record associated with the
+                                declaration and establishment of Bangladesh
+                                as an independent nation.
+                            </p>
+
+                            <p>
+                                <strong>Source:</strong>
+                                Historical Archive Collection
+                            </p>
+
+                            <button class="details-button"
+                                    onclick="showDocumentDetails(
+                                    'Declaration of Independence',
+                                    'March 1971',
+                                    'Declaration',
+                                    'Historical Archive Collection',
+                                    'A historical record associated with the declaration and establishment of Bangladesh as an independent nation.'
+                                    )">
+                                View Details
+                            </button>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="document-card"
+                             data-type="official">
+
+                        <img src="assets/images/img-2.png"
+                             alt="Official correspondence">
+
+                        <div class="document-content">
+
+                            <span class="card-tag">
+                                OFFICIAL
+                            </span>
+
+                            <h2>
+                                Official War Correspondence
+                            </h2>
+
+                            <p class="document-date">
+                                Date: 1971
+                            </p>
+
+                            <p>
+                                Correspondence documenting important
+                                administrative and military developments
+                                during the Liberation War.
+                            </p>
+
+                            <p>
+                                <strong>Source:</strong>
+                                Historical Records Collection
+                            </p>
+
+                            <button class="details-button"
+                                    onclick="showDocumentDetails(
+                                    'Official War Correspondence',
+                                    '1971',
+                                    'Official Correspondence',
+                                    'Historical Records Collection',
+                                    'Correspondence documenting important administrative and military developments during the Liberation War.'
+                                    )">
+                                View Details
+                            </button>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="document-card"
+                             data-type="treaty">
+
+                        <img src="assets/images/img-3.jpg"
+                             alt="Historical agreement">
+
+                        <div class="document-content">
+
+                            <span class="card-tag">
+                                AGREEMENT
+                            </span>
+
+                            <h2>
+                                Historical Agreements
+                            </h2>
+
+                            <p class="document-date">
+                                Date: December 1971
+                            </p>
+
+                            <p>
+                                Historical records connected with the events
+                                surrounding the end of the Liberation War.
+                            </p>
+
+                            <p>
+                                <strong>Source:</strong>
+                                National Historical Collection
+                            </p>
+
+                            <button class="details-button"
+                                    onclick="showDocumentDetails(
+                                    'Historical Agreements',
+                                    'December 1971',
+                                    'Treaty / Agreement',
+                                    'National Historical Collection',
+                                    'Historical records connected with the events surrounding the end of the Liberation War.'
+                                    )">
+                                View Details
+                            </button>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <div id="documentModal" class="modal">
+
+            <div class="modal-content">
+
+                <button class="modal-close"
+                        onclick="closeDocumentDetails()">
+                    &times;
+                </button>
+
+                <span class="card-tag" id="modalType">
+                    DOCUMENT
+                </span>
+
+                <h2 id="modalTitle">
+                    Document Title
+                </h2>
+
+                <p>
+                    <strong>Publication Date:</strong>
+                    <span id="modalDate"></span>
+                </p>
+
+                <p>
+                    <strong>Source:</strong>
+                    <span id="modalSource"></span>
+                </p>
+
+                <p id="modalDescription"></p>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <footer class="footer">
+
+        <div class="container footer-content">
+
+            <div>
+                <h3>Liberation War Archive</h3>
+
+                <p>
+                    Preserving historical memories for future generations.
+                </p>
+            </div>
+
+            <div>
+                <h3>Quick Links</h3>
+
+                <a href="index.html">Home</a>
+                <a href="interviews.html">Interviews</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="contact.html">Contact</a>
+            </div>
+
+        </div>
+
+        <div class="copyright">
+            <p>
+                &copy; 2026 Liberation War Archive.
+            </p>
+        </div>
+
+    </footer>
+
+
+    <script src="assets/script.js"></script>
+
+</body>
+</html>
